@@ -9,10 +9,9 @@ public class FileOperation
 {
     public static void Save(String filename, Country[] countries) throws IOException
     {
-        FileWriter fw = new FileWriter(filename);
-
         try
         {
+            FileWriter fw = new FileWriter(filename);
             fw.write(countries.length + "\n");
 
             for(int i = 0; i < countries.length; i++)
@@ -21,32 +20,41 @@ public class FileOperation
                 fw.write(countries[i].capital + "\n");
                 fw.write(countries[i].population + "\n");
             }
+
+            fw.close();
         }
         catch (IOException ex)
         {
             System.out.println("Ошибка: " + ex.getMessage());
         }
-
-        fw.close();
     }
 
     public static Country[] Load(String filename) throws IOException
     {
-        Scanner scanner = new Scanner(new FileReader(filename));
-        int i = 0;
+        Country[] countries = new Country[0];
 
-        Country[] countries = new Country[Integer.parseInt(scanner.nextLine())];
-
-        for(int j = 0; j < countries.length; j++)
-            countries[j] = new Country();
-
-        while (scanner.hasNextLine())
+        try
         {
-            countries[i].name = scanner.nextLine();
-            countries[i].capital = scanner.nextLine();
-            countries[i].population = Integer.parseInt(scanner.nextLine());
+            Scanner scanner = new Scanner(new FileReader(filename));
+            int i = 0;
 
-            i++;
+            countries = new Country[Integer.parseInt(scanner.nextLine())];
+
+            for (int j = 0; j < countries.length; j++)
+                countries[j] = new Country();
+
+            while (scanner.hasNextLine())
+            {
+                countries[i].name = scanner.nextLine();
+                countries[i].capital = scanner.nextLine();
+                countries[i].population = Integer.parseInt(scanner.nextLine());
+
+                i++;
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Ошибка: " + ex.getMessage());
         }
 
         return countries;

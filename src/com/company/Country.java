@@ -57,8 +57,6 @@ public class Country {
             reservMassive[i] = new Country(name, capital,intPoulation);
             }
 
-        ShowCountry(reservMassive);
-
         return reservMassive;
     }
 
@@ -83,15 +81,13 @@ public class Country {
                 reservMassive[i] = countries[i];
         }
 
-        ShowCountry(reservMassive);
-
         return reservMassive;
     }
 
     public static void ShowCountry(Country[] countries) {
         for (int i = 0; i < countries.length; i++)
         {
-            System.out.println("Страна №" + (i + 1));
+            System.out.println("\nСтрана №" + (i + 1));
             System.out.println("Страна: " + countries[i].name);
             System.out.println("Столица: " + countries[i].capital);
             System.out.println("Население: " + countries[i].population);
