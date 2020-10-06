@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main extends FileOperation {
 
     public static void main(String[] args) throws IOException {
-        Country[] countries = new Country[1];
+        Country[] countries;
 
         String filename = "note.txt", reservFilename = "reservNote.txt";
         String choise = "";
